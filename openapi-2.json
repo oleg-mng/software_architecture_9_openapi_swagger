@@ -1,0 +1,434 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Ordering resources on the cloud",
+    "version": "1.0.11"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api/v1/",
+      "description": "Dev server"
+    }
+  ],
+  "paths": {
+    "/clouds": {
+      "get": {
+        "summary": "Method for getting a list of resources on the cloud",
+        "tags": [
+          "Clouds"
+        ],
+        "operationId": "getAllClouds",
+        "responses": {
+          "200": {
+            "description": "Successful response with a list of resources in the cloud",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Clouds"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "All the rest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creating an order on the cloud",
+        "tags": [
+          "Clouds"
+        ],
+        "operationId": "CreateClouds",
+        "responses": {
+          "200": {
+            "description": "Successful response with a list of resources in the cloud",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Clouds"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "All the rest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clouds/{cloud_id}": {
+      "get": {
+        "summary": "Method for getting a list of resources on the cloud by ID",
+        "tags": [
+          "Clouds"
+        ],
+        "operationId": "getCloudById",
+        "parameters": [
+          {
+            "name": "cloud_id",
+            "in": "path",
+            "required": true,
+            "description": "Cloud order ID",
+            "schema": {
+              "type": "string",
+              "example": "m107870lm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with a list of resources in the cloud",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Clouds"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Order with given ID was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "All the rest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Cloud order cancellation method by ID",
+        "tags": [
+          "Clouds"
+        ],
+        "operationId": "cancelCloudById",
+        "parameters": [
+          {
+            "name": "cloud_id",
+            "in": "path",
+            "required": true,
+            "description": "Cloud order ID",
+            "schema": {
+              "type": "string",
+              "example": "m107870lm"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with a list of resources in the cloud",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Clouds"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Order with given ID was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "All the rest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ip_address/{ip_address}": {
+      "get": {
+        "summary": "method to get ip address",
+        "tags": [
+          "IP_address"
+        ],
+        "operationId": "getIPaddress",
+        "parameters": [
+          {
+            "name": "ip_address",
+            "in": "path",
+            "required": true,
+            "description": "IP address",
+            "schema": {
+              "type": "string",
+              "example": "5.255.255.70"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IP_address"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "All the rest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customer": {
+      "get": {
+        "summary": "Name's customer get method",
+        "tags": [
+          "Customer"
+        ],
+        "operationId": "getCustomerName",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "All the rest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Adds a new user",
+        "tags": [
+          "Customer"
+        ],
+        "operationId": "CreateCustomer",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "All the rest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update customer method",
+        "tags": [
+          "Customer"
+        ],
+        "operationId": "updateCustomer",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "All the rest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "head": {
+        "summary": "Server resource request",
+        "tags": [
+          "Customer"
+        ],
+        "operationId": "requestServer",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "All the rest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Cloud": {
+        "type": "object",
+        "required": [
+          "id_client",
+          "OS",
+          "RAM",
+          "CPU",
+          "HDD"
+        ],
+        "properties": {
+          "cloud_id": {
+            "type": "string",
+            "example": "m107870lm"
+          },
+          "id_client": {
+            "type": "string",
+            "example": "m107870lm"
+          },
+          "OS": {
+            "type": "string",
+            "enum": [
+              "Windows",
+              "Linux"
+            ],
+            "description": "server operating system"
+          },
+          "RAM": {
+            "type": "string",
+            "example": 128,
+            "description": "amount of RAM"
+          },
+          "CPU": {
+            "type": "string",
+            "example": 8,
+            "description": "number of processor cores"
+          }
+        }
+      },
+      "Clouds": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Cloud"
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "Customer": {
+        "type": "object",
+        "required": [
+          "id_customer",
+          "fio",
+          "hash"
+        ],
+        "properties": {
+          "id_customer": {
+            "type": "integer"
+          },
+          "fio": {
+            "type": "string",
+            "example": "Christopher Nolan"
+          },
+          "hash": {
+            "type": "string"
+          }
+        }
+      },
+      "IP_address": {
+        "type": "object",
+        "required": [
+          "id_addr"
+        ],
+        "properties": {
+          "id_addr": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
